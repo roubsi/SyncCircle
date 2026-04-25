@@ -1,0 +1,325 @@
+:root {
+  --bg: #031006;
+  --bg-soft: #07180a;
+  --panel: rgba(2, 18, 8, 0.92);
+  --panel-strong: rgba(0, 12, 5, 0.96);
+  --line: rgba(102, 255, 153, 0.28);
+  --line-strong: rgba(102, 255, 153, 0.52);
+  --text: #a9ffb9;
+  --text-strong: #d4ffd9;
+  --muted: #67bc7a;
+  --accent: #52ff82;
+  --accent-soft: rgba(82, 255, 130, 0.14);
+  --warning: #ff7d7d;
+  --shadow: 0 0 26px rgba(82, 255, 130, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: "Courier New", Courier, monospace;
+  background:
+    linear-gradient(rgba(82, 255, 130, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(82, 255, 130, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at top, rgba(33, 129, 55, 0.18), transparent 30%),
+    linear-gradient(180deg, #010503 0%, #041109 100%);
+  background-size: 100% 4px, 4px 100%, auto, auto;
+  text-shadow: 0 0 10px rgba(82, 255, 130, 0.16);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12));
+  mix-blend-mode: screen;
+}
+
+.page-shell {
+  width: min(1180px, calc(100% - 28px));
+  margin: 0 auto;
+  padding: 20px 0 44px;
+}
+
+.hero,
+.layout {
+  display: grid;
+  gap: 18px;
+}
+
+.hero {
+  grid-template-columns: 1.5fr 0.7fr;
+  margin-bottom: 18px;
+}
+
+.hero-copy,
+.hero-card,
+.panel,
+.meeting-card,
+.empty-state {
+  background: linear-gradient(180deg, rgba(3, 22, 10, 0.96), rgba(0, 10, 4, 0.98));
+  border: 1px solid var(--line);
+  box-shadow: inset 0 0 0 1px rgba(82, 255, 130, 0.05), var(--shadow);
+}
+
+.hero-copy,
+.hero-card,
+.panel {
+  padding: 24px;
+}
+
+.hero-copy {
+  position: relative;
+}
+
+.hero-copy::after,
+.hero-card::after,
+.panel::after,
+.meeting-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, rgba(82, 255, 130, 0.02) 100%);
+}
+
+.hero-copy,
+.hero-card,
+.panel,
+.meeting-card {
+  position: relative;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+}
+
+.hero h1,
+.section-heading h2,
+.meeting-card h3,
+.hero-card strong {
+  margin: 0;
+  color: var(--text-strong);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.hero h1 {
+  max-width: 11ch;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 0.95;
+  margin-bottom: 16px;
+}
+
+.hero-text,
+.hero-card span,
+.meeting-meta,
+.status,
+.empty-state {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.hero-pills,
+.tag-row,
+.invitee-row,
+.button-row,
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-pills span,
+.meeting-tag,
+.invitee-chip {
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.hero-card {
+  display: grid;
+  align-content: center;
+  min-height: 100%;
+}
+
+.hero-card strong {
+  font-size: 2.2rem;
+  margin: 8px 0 12px;
+}
+
+.layout {
+  grid-template-columns: minmax(320px, 430px) minmax(320px, 1fr);
+}
+
+.section-heading h2 {
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+}
+
+.meeting-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--text-strong);
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: rgba(0, 12, 5, 0.95);
+  color: var(--text-strong);
+  padding: 13px 14px;
+  border-radius: 0;
+  outline: none;
+  box-shadow: inset 0 0 12px rgba(82, 255, 130, 0.05);
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--line-strong);
+  box-shadow: 0 0 0 1px rgba(82, 255, 130, 0.22), inset 0 0 12px rgba(82, 255, 130, 0.08);
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+button {
+  border: 1px solid var(--line-strong);
+  background: rgba(5, 26, 10, 0.98);
+  color: var(--accent);
+  padding: 12px 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+button:hover {
+  background: rgba(10, 35, 14, 1);
+  box-shadow: 0 0 14px rgba(82, 255, 130, 0.12);
+}
+
+.primary-button {
+  background: linear-gradient(180deg, rgba(9, 46, 16, 0.98), rgba(4, 24, 9, 0.98));
+}
+
+.secondary-button,
+.ghost-button,
+.danger-button {
+  background: rgba(2, 17, 7, 0.96);
+}
+
+.danger-button {
+  color: var(--warning);
+  border-color: rgba(255, 125, 125, 0.45);
+}
+
+.hidden {
+  display: none;
+}
+
+.status {
+  min-height: 24px;
+  margin: 0;
+}
+
+.status.success {
+  color: var(--accent);
+}
+
+.status.error {
+  color: var(--warning);
+}
+
+.meeting-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.meeting-card {
+  padding: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.meeting-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 12px;
+}
+
+.meeting-card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 10px;
+}
+
+.meeting-meta {
+  display: grid;
+  gap: 8px;
+}
+
+.meeting-meta strong {
+  color: var(--text-strong);
+}
+
+.card-actions {
+  justify-content: flex-end;
+}
+
+.empty-state {
+  padding: 22px;
+}
+
+@media (max-width: 920px) {
+  .hero,
+  .layout,
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .page-shell {
+    width: min(100% - 18px, 1180px);
+    padding-top: 10px;
+  }
+
+  .card-actions {
+    justify-content: flex-start;
+  }
+}

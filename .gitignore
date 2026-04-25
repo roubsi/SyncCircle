@@ -1,0 +1,25 @@
+config.php
+data/meetings.json
+
+# Dependencies
+/vendor/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.php
+
+# PHPStorm/IDE
+.idea/
+.vscode/
+
+# Build artifacts and caches
+/storage/*.key
+/node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
